@@ -1,10 +1,13 @@
 import "./index.css";
+import { Web3Button, useAccount } from "@web3modal/react";
 
 function App() {
+  const { account, isReady } = useAccount();
+
   return (
-    <div className='container mx-auto py-6'>
-      <h1 className="font-bold text-3xl">Starter Template</h1>
-      <p>Vite, React, TypeScript, TailwindCSS 3</p>
+    <div className="container mx-auto py-6 min-h-screen grid place-items-center">
+      {account.isConnected ? <h1>{account.address}</h1> : null}
+      <Web3Button />
     </div>
   );
 }
